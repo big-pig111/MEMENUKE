@@ -175,7 +175,7 @@
             </p>
             <div class="mt-4 inline-flex items-center gap-3 bg-white/10 px-3 py-2 rounded-sm border border-white/20">
                 <span class="text-xs font-mono tracking-wider text-gray-300">CA</span>
-                <code id="ca-value" class="text-sm font-mono text-white">soon</code>
+                <code id="ca-value" class="text-sm font-mono text-white">JA1aD9LXWpTh8W5RUy6vhBrRT9YFE43j6nQqDJymetzP</code>
                 <button id="copy-ca" class="text-xs bg-popYellow text-cyberBlack font-bold px-2 py-1 rounded-sm hover:opacity-90">
                     COPY
                 </button>
@@ -442,7 +442,7 @@
       if (copyCaBtn) {
         copyCaBtn.addEventListener('click', async () => {
           try {
-            await navigator.clipboard.writeText(caValue?.textContent || 'soon');
+            await navigator.clipboard.writeText(caValue?.textContent || 'JA1aD9LXWpTh8W5RUy6vhBrRT9YFE43j6nQqDJymetzP');
             copyCaBtn.textContent = 'COPIED';
             setTimeout(() => (copyCaBtn.textContent = 'COPY'), 1200);
           } catch (e) {
