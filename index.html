@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💥 DogeMoji 🎨 | Explosive Image Lab</title>
+    <title>💥 MEME NUKE 🎨 | Explosive Image Lab</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.css" rel="stylesheet">
@@ -166,13 +166,20 @@
             <div class="inline-block mb-2 px-3 py-1 bg-popYellow text-cyberBlack text-xs font-bold uppercase tracking-widest">
                 Experimental Lab
             </div>
-            <h1 class="text-[clamp(2.5rem,8vw,5rem)] font-display font-bold mb-4 leading-none glitch-effect" data-text="DogeMoji">
-                <span class="text-white block md:inline">Doge</span> 
-                <span class="text-popPink block md:inline">Moji</span>
+            <h1 class="text-[clamp(2.5rem,8vw,5rem)] font-display font-bold mb-4 leading-none glitch-effect" data-text="MEME NUKE">
+                <span class="text-white block md:inline">MEME</span> 
+                <span class="text-popPink block md:inline">NUKE</span>
             </h1>
             <p class="text-[clamp(1rem,3vw,1.3rem)] text-gray-300 max-w-2xl ml-0 md:ml-2">
                 Detonate your images with AI-powered viral transformation
             </p>
+            <div class="mt-4 inline-flex items-center gap-3 bg-white/10 px-3 py-2 rounded-sm border border-white/20">
+                <span class="text-xs font-mono tracking-wider text-gray-300">CA</span>
+                <code id="ca-value" class="text-sm font-mono text-white">soon</code>
+                <button id="copy-ca" class="text-xs bg-popYellow text-cyberBlack font-bold px-2 py-1 rounded-sm hover:opacity-90">
+                    COPY
+                </button>
+            </div>
         </div>
     </header>
     
@@ -317,26 +324,26 @@
         <div class="max-w-6xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
-                    <p class="text-2xl font-display font-bold text-white">DogeMoji</p>
+                    <p class="text-2xl font-display font-bold text-white">MEME NUKE</p>
                     <p class="text-gray-400 text-sm mt-1">EST. 2025 • VIRAL RESEARCH LAB</p>
                 </div>
                 
                 <div class="flex gap-4">
-                    <a href="#" class="w-10 h-10 bg-black border-2 solid popPink flex items-center justify-center hover:bg-popPink hover:text-black transition-colors">
+                    <a href="https://x.com/dogemoji_meme?s=21" target="_blank" rel="noopener" class="w-10 h-10 bg-black border-2 solid popPink flex items-center justify-center hover:bg-popPink hover:text-black transition-colors">
                         <i class="fa fa-twitter"></i>
                     </a>
-                    <a href="#" class="w-10 h-10 bg-black border-2 solid popBlue flex items-center justify-center hover:bg-popBlue hover:text-black transition-colors">
+                    <a href="https://x.com/dogemoji_meme?s=21" target="_blank" rel="noopener" class="w-10 h-10 bg-black border-2 solid popBlue flex items-center justify-center hover:bg-popBlue hover:text-black transition-colors">
                         <i class="fa fa-instagram"></i>
                     </a>
-                    <a href="#" class="w-10 h-10 bg-black border-2 solid popYellow flex items-center justify-center hover:bg-popYellow hover:text-black transition-colors">
+                    <a href="https://x.com/dogemoji_meme?s=21" target="_blank" rel="noopener" class="w-10 h-10 bg-black border-2 solid popYellow flex items-center justify-center hover:bg-popYellow hover:text-black transition-colors">
                         <i class="fa fa-reddit"></i>
                     </a>
                 </div>
             </div>
             
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
-                <p>WARNING: DogeMoji IS FOR ENTERTAINMENT PURPOSES ONLY. NOT RESPONSIBLE FOR VIRAL CONTENT.</p>
-                <p class="mt-2">© 2025 DogeMoji LABORATORIES. ALL RIGHTS RESERVED.</p>
+                <p>WARNING: MEME NUKE IS FOR ENTERTAINMENT PURPOSES ONLY. NOT RESPONSIBLE FOR VIRAL CONTENT.</p>
+                <p class="mt-2">© 2023 MEME NUKE LABORATORIES. ALL RIGHTS RESERVED.</p>
             </div>
         </div>
     </footer>
@@ -382,6 +389,8 @@
       const resultContainer = document.getElementById('result-container');
       const resultImage = document.getElementById('result-image');
       const downloadBtn = document.getElementById('download-btn');
+      const caValue = document.getElementById('ca-value');
+      const copyCaBtn = document.getElementById('copy-ca');
 
       // State
       let selectedImage = null;
@@ -428,6 +437,19 @@
         cropCancelBtn.classList.remove('hidden');
         cropStartBtn.classList.add('hidden');
       });
+
+      // Copy CA
+      if (copyCaBtn) {
+        copyCaBtn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(caValue?.textContent || 'soon');
+            copyCaBtn.textContent = 'COPIED';
+            setTimeout(() => (copyCaBtn.textContent = 'COPY'), 1200);
+          } catch (e) {
+            alert('Copy failed');
+          }
+        });
+      }
 
       cropCancelBtn.addEventListener('click', () => {
         if (!cropper) return;
