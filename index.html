@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💥 MEME NUKE 🎨 | Explosive Image Lab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.css" rel="stylesheet">
+    
+    <!-- Configure Tailwind custom colors and fonts -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        popYellow: '#FFDE00',
+                        popPink: '#FF0080',
+                        popBlue: '#0066FF',
+                        popGreen: '#39FF14',
+                        cyberBlack: '#0D0221',
+                        cyberPurple: '#6A0DAD',
+                    },
+                    fontFamily: {
+                        display: ['"Press Start 2P"', 'Impact', 'sans-serif'],
+                        body: ['"Space Grotesk"', 'Helvetica', 'Arial', 'sans-serif'],
+                    },
+                    animation: {
+                        'glitch': 'glitch 1s infinite',
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float-irregular': 'float-irregular 4s ease-in-out infinite',
+                        'scanline': 'scanline 4s linear infinite',
+                    },
+                    keyframes: {
+                        'float-irregular': {
+                            '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+                            '25%': { transform: 'translateY(-12px) rotate(2deg)' },
+                            '50%': { transform: 'translateY(6px) rotate(-1deg)' },
+                            '75%': { transform: 'translateY(-8px) rotate(1deg)' },
+                        },
+                        'scanline': {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(100vh)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-stroke {
+                -webkit-text-stroke: 2px black;
+            }
+            .text-shadow-pop {
+                text-shadow: 4px 4px 0px black;
+            }
+            .border-double {
+                border: 4px solid black;
+                box-shadow: 6px 6px 0px black;
+            }
+            .glitch-effect {
+                position: relative;
+            }
+            .glitch-effect::before, .glitch-effect::after {
+                content: attr(data-text);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+            .glitch-effect::before {
+                left: 2px;
+                text-shadow: -2px 0 #FF0080;
+                clip: rect(44px, 450px, 56px, 0);
+                animation: glitch-anim 5s infinite linear alternate-reverse;
+            }
+            .glitch-effect::after {
+                left: -2px;
+                text-shadow: -2px 0 #0066FF;
+                clip: rect(44px, 450px, 56px, 0);
+                animation: glitch-anim2 5s infinite linear alternate-reverse;
+            }
+            @keyframes glitch-anim {
+                0% { clip: rect(42px, 9999px, 44px, 0); }
+                5% { clip: rect(12px, 9999px, 59px, 0); }
+                10% { clip: rect(48px, 9999px, 29px, 0); }
+                15% { clip: rect(42px, 9999px, 73px, 0); }
+                20% { clip: rect(63px, 9999px, 27px, 0); }
+                25% { clip: rect(34px, 9999px, 55px, 0); }
+                30% { clip: rect(86px, 9999px, 73px, 0); }
+                35% { clip: rect(20px, 9999px, 20px, 0); }
+                40% { clip: rect(26px, 9999px, 60px, 0); }
+                45% { clip: rect(25px, 9999px, 66px, 0); }
+                50% { clip: rect(57px, 9999px, 98px, 0); }
+                55% { clip: rect(5px, 9999px, 46px, 0); }
+                60% { clip: rect(82px, 9999px, 31px, 0); }
+                65% { clip: rect(54px, 9999px, 27px, 0); }
+                70% { clip: rect(28px, 9999px, 99px, 0); }
+                75% { clip: rect(45px, 9999px, 69px, 0); }
+                80% { clip: rect(23px, 9999px, 85px, 0); }
+                85% { clip: rect(54px, 9999px, 84px, 0); }
+                90% { clip: rect(45px, 9999px, 47px, 0); }
+                95% { clip: rect(37px, 9999px, 20px, 0); }
+                100% { clip: rect(4px, 9999px, 91px, 0); }
+            }
+            @keyframes glitch-anim2 {
+                0% { clip: rect(65px, 9999px, 100px, 0); }
+                5% { clip: rect(52px, 9999px, 74px, 0); }
+                10% { clip: rect(79px, 9999px, 85px, 0); }
+                15% { clip: rect(75px, 9999px, 5px, 0); }
+                20% { clip: rect(67px, 9999px, 61px, 0); }
+                25% { clip: rect(14px, 9999px, 79px, 0); }
+                30% { clip: rect(1px, 9999px, 66px, 0); }
+                35% { clip: rect(86px, 9999px, 30px, 0); }
+                40% { clip: rect(23px, 9999px, 98px, 0); }
+                45% { clip: rect(85px, 9999px, 72px, 0); }
+                50% { clip: rect(71px, 9999px, 75px, 0); }
+                55% { clip: rect(2px, 9999px, 48px, 0); }
+                60% { clip: rect(30px, 9999px, 16px, 0); }
+                65% { clip: rect(59px, 9999px, 50px, 0); }
+                70% { clip: rect(41px, 9999px, 62px, 0); }
+                75% { clip: rect(2px, 9999px, 82px, 0); }
+                80% { clip: rect(47px, 9999px, 73px, 0); }
+                85% { clip: rect(3px, 9999px, 27px, 0); }
+                90% { clip: rect(26px, 9999px, 55px, 0); }
+                95% { clip: rect(42px, 9999px, 97px, 0); }
+                100% { clip: rect(38px, 9999px, 49px, 0); }
+            }
+            .scanline::before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 5px;
+                background: rgba(255, 255, 255, 0.1);
+                animation: scanline 4s linear infinite;
+            }
+        }
+    </style>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-cyberBlack text-white font-body min-h-screen relative overflow-x-hidden scanline">
+    <!-- Background grid pattern -->
+    <div class="fixed inset-0 z-0 opacity-10">
+        <div class="h-full w-full" style="background-image: linear-gradient(#0066FF 1px, transparent 1px), linear-gradient(90deg, #0066FF 1px, transparent 1px); background-size: 40px 40px;"></div>
+    </div>
+    
+    <!-- Decorative elements -->
+    <div class="fixed top-[10%] right-[5%] w-40 h-40 bg-popPink/30 rounded-full filter blur-3xl animate-pulse-fast"></div>
+    <div class="fixed bottom-[20%] left-[8%] w-60 h-60 bg-popBlue/20 rounded-full filter blur-3xl animate-pulse-fast" style="animation-delay: 1s"></div>
+    
+    <!-- Floating geometric shapes -->
+    <div class="fixed top-1/4 left-[15%] w-16 h-16 bg-popYellow rotate-45 animate-float-irregular z-0" style="animation-delay: 0.3s"></div>
+    <div class="fixed bottom-1/3 right-[12%] w-20 h-20 bg-popGreen rounded-full animate-float-irregular z-0" style="animation-delay: 0.7s"></div>
+    <div class="fixed top-2/3 left-[20%] w-12 h-24 bg-popPink animate-float-irregular z-0" style="animation-delay: 1.1s"></div>
+    
+    <!-- Header -->
+    <header class="pt-12 pb-8 px-4 relative z-10">
+        <div class="max-w-6xl mx-auto">
+            <div class="inline-block mb-2 px-3 py-1 bg-popYellow text-cyberBlack text-xs font-bold uppercase tracking-widest">
+                Experimental Lab
+            </div>
+            <h1 class="text-[clamp(2.5rem,8vw,5rem)] font-display font-bold mb-4 leading-none glitch-effect" data-text="MEME NUKE">
+                <span class="text-white block md:inline">MEME</span> 
+                <span class="text-popPink block md:inline">NUKE</span>
+            </h1>
+            <p class="text-[clamp(1rem,3vw,1.3rem)] text-gray-300 max-w-2xl ml-0 md:ml-2">
+                Detonate your images with AI-powered viral transformation
+            </p>
+        </div>
+    </header>
+    
+    <!-- Main content -->
+    <main class="max-w-6xl mx-auto px-4 pb-20 relative z-10">
+        <!-- Image upload and result display -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+            <!-- Upload area -->
+            <div class="bg-white text-cyberBlack p-6 rounded-sm border-double transform hover:-translate-y-1 transition-transform duration-300">
+                <h2 class="text-xl font-display font-bold mb-6 text-popBlue flex items-center">
+                    <span class="mr-2">01</span> INPUT MATERIAL
+                </h2>
+                <div id="upload-area" class="border-2 dashed cyberBlack p-8 text-center bg-gray-100 cursor-pointer hover:bg-gray-200 transition-all">
+                    <i class="fa fa-upload text-5xl text-popPink mb-4"></i>
+                    <p class="text-lg font-bold">DROP IMAGE HERE</p>
+                    <p class="text-sm text-gray-600 mt-2">JPG/PNG ONLY</p>
+                    <input type="file" id="image-upload" accept="image/*" class="hidden">
+                </div>
+                <div id="preview-container" class="mt-6 hidden">
+                    <div class="flex items-center mb-3">
+                        <h3 class="font-bold">SOURCE MATERIAL</h3>
+                        <span class="ml-3 bg-popBlue text-white text-xs px-2 py-1 rounded-sm">READY</span>
+                    </div>
+                    <div class="border-2 solid cyberBlack p-1">
+                        <img id="preview-image" src="" alt="Preview image" class="max-w-full h-auto">
+                    </div>
+                    <div class="mt-3 flex gap-2">
+                        <button id="crop-start" class="bg-cyberPurple text-white text-sm px-3 py-2 rounded-sm hidden"><i class="fa fa-crop mr-1"></i>开始裁剪(1:1)</button>
+                        <button id="crop-apply" class="bg-popGreen text-black text-sm px-3 py-2 rounded-sm hidden"><i class="fa fa-check mr-1"></i>应用裁剪</button>
+                        <button id="crop-cancel" class="bg-popPink text-white text-sm px-3 py-2 rounded-sm hidden"><i class="fa fa-times mr-1"></i>取消</button>
+                    </div>
+                </div>
+
+                <!-- Style prompt input -->
+                <div class="mt-6 text-left">
+                    <label for="prompt-input" class="block text-sm font-bold mb-2">STYLE PROMPT</label>
+                    <textarea id="prompt-input" class="w-full px-3 py-2 border-2 solid cyberBlack rounded-sm text-sm text-cyberBlack" rows="4" placeholder="e.g. 3D cartoon, orange dominant, cute, sticker-like, bold outlines, clean gradient background"></textarea>
+                </div>
+                <!-- Convert button moved here -->
+                <div class="mt-4 text-center">
+                    <button id="convert-btn" class="relative bg-popPink text-white font-display font-bold py-4 px-8 text-lg rounded-sm border-4 solid black transform hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden group">
+                        <span class="relative z-10 flex items-center justify-center">
+                            <i class="fa fa-bolt mr-2"></i> DETONATE NOW
+                        </span>
+                        <span class="absolute inset-0 bg-popYellow transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 mix-blend-multiply"></span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Result display area -->
+            <div class="bg-white text-cyberBlack p-6 rounded-sm border-double transform hover:-translate-y-1 transition-transform duration-300">
+                <h2 class="text-xl font-display font-bold mb-6 text-popPink flex items-center">
+                    <span class="mr-2">02</span> EXPLOSION RESULT
+                </h2>
+                <div id="result-area" class="border-2 dashed cyberBlack p-8 text-center bg-gray-100 min-h-[240px]">
+                    <i class="fa fa-bomb text-5xl text-popBlue mb-4"></i>
+                    <p class="text-lg font-bold">RESULT WILL APPEAR HERE</p>
+                    <p class="text-sm text-gray-600 mt-2">INITIATE DETONATION</p>
+                </div>
+                <div id="result-container" class="mt-6 hidden">
+                    <div class="flex items-center mb-3">
+                        <h3 class="font-bold">DETONATED MEME</h3>
+                        <span class="ml-3 bg-popPink text-white text-xs px-2 py-1 rounded-sm">COMPLETE</span>
+                    </div>
+                    <div class="border-2 solid cyberBlack p-1">
+                        <img id="result-image" src="" alt="Meme result image" class="max-w-full h-auto">
+                    </div>
+                    <button id="download-btn" class="mt-5 bg-cyberPurple text-white font-bold py-2 px-4 rounded-sm hover:bg-opacity-80 transition-colors flex items-center">
+                        <i class="fa fa-download mr-2"></i> SAVE MEME
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Viral meme gallery -->
+        <div class="bg-white text-cyberBlack p-6 rounded-sm border-double mb-12">
+            <h2 class="text-xl font-display font-bold mb-8 text-popGreen flex items-center">
+                <span class="mr-2">03</span> DETONATION ARCHIVE
+                <span class="ml-4 bg-popRed text-white text-xs px-3 py-1 rounded-sm">HOTTEST</span>
+            </h2>
+            
+            <!-- Gallery grid with pop art layout -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <!-- Gallery item 1 - larger size -->
+                <div class="col-span-2 row-span-2 group cursor-pointer">
+                    <div class="aspect-square rounded-sm overflow-hidden bg-gray-100 border-2 solid black">
+                        <img src="https://picsum.photos/seed/meme10/600/600" alt="Viral meme example" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <p class="text-sm font-bold mt-1">SYSTEM OVERLOAD</p>
+                    <p class="text-xs text-gray-600">18.4K DETONATIONS</p>
+                </div>
+                
+                <!-- Gallery item 2 -->
+                <div class="group cursor-pointer">
+                    <div class="aspect-square rounded-sm overflow-hidden bg-gray-100 border-2 solid black">
+                        <img src="https://picsum.photos/seed/meme11/300/300" alt="Viral meme example" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <p class="text-sm font-bold mt-1">ERROR 404</p>
+                    <p class="text-xs text-gray-600">9.2K DETONATIONS</p>
+                </div>
+                
+                <!-- Gallery item 3 -->
+                <div class="group cursor-pointer">
+                    <div class="aspect-square rounded-sm overflow-hidden bg-gray-100 border-2 solid black">
+                        <img src="https://picsum.photos/seed/meme12/300/300" alt="Viral meme example" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <p class="text-sm font-bold mt-1">MIND BLOWN</p>
+                    <p class="text-xs text-gray-600">12.7K DETONATIONS</p>
+                </div>
+                
+                <!-- Gallery item 4 -->
+                <div class="group cursor-pointer">
+                    <div class="aspect-square rounded-sm overflow-hidden bg-gray-100 border-2 solid black">
+                        <img src="https://picsum.photos/seed/meme13/300/300" alt="Viral meme example" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <p class="text-sm font-bold mt-1">GLITCH DETECTED</p>
+                    <p class="text-xs text-gray-600">7.5K DETONATIONS</p>
+                </div>
+                
+                <!-- Gallery item 5 -->
+                <div class="group cursor-pointer">
+                    <div class="aspect-square rounded-sm overflow-hidden bg-gray-100 border-2 solid black">
+                        <img src="https://picsum.photos/seed/meme14/300/300" alt="Viral meme example" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <p class="text-sm font-bold mt-1">SYSTEM SHOCK</p>
+                    <p class="text-xs text-gray-600">15.1K DETONATIONS</p>
+                </div>
+            </div>
+            
+            <!-- View more button -->
+            <div class="text-center mt-8">
+                <button id="view-more-btn" class="bg-cyberBlack text-white font-bold py-2 px-4 rounded-sm hover:bg-opacity-80 transition-colors flex items-center mx-auto">
+                    <i class="fa fa-folder-open mr-2"></i> VIEW ARCHIVE
+                </button>
+            </div>
+        </div>
+        
+        
+        
+        <!-- Loading animation with glitch effect -->
+        <div id="loading-animation" class="fixed inset-0 bg-cyberBlack bg-opacity-95 flex flex-col items-center justify-center z-50 hidden">
+            <div class="w-24 h-24 border-4 border-popYellow border-t-popPink rounded-full animate-spin mb-8"></div>
+            <h3 class="text-2xl font-display font-bold mb-4 text-white">DETONATION IN PROGRESS</h3>
+            <p class="text-popPink font-mono text-lg mb-6">SYSTEM: 87% COMPLETE</p>
+            <div class="w-64 h-2 bg-gray-700 mb-12">
+                <div class="h-full bg-popGreen w-0" id="progress-bar"></div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer with unique style -->
+    <footer class="bg-cyberBlack border-t-4 solid popBlue py-8 px-4 relative z-10">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <p class="text-2xl font-display font-bold text-white">MEME NUKE</p>
+                    <p class="text-gray-400 text-sm mt-1">EST. 2023 • VIRAL RESEARCH LAB</p>
+                </div>
+                
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 bg-black border-2 solid popPink flex items-center justify-center hover:bg-popPink hover:text-black transition-colors">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-black border-2 solid popBlue flex items-center justify-center hover:bg-popBlue hover:text-black transition-colors">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 bg-black border-2 solid popYellow flex items-center justify-center hover:bg-popYellow hover:text-black transition-colors">
+                        <i class="fa fa-reddit"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+                <p>WARNING: MEME NUKE IS FOR ENTERTAINMENT PURPOSES ONLY. NOT RESPONSIBLE FOR VIRAL CONTENT.</p>
+                <p class="mt-2">© 2023 MEME NUKE LABORATORIES. ALL RIGHTS RESERVED.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.js"></script>
+    <script type="module">
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
+      import { getAuth, signInAnonymously } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
+      import { getStorage, ref, uploadBytes } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js';
+      import { getFunctions, httpsCallable } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-functions.js';
+
+      const cfg = {
+        apiKey: "AIzaSyA5Z5ieEbAcfQX0kxGSn9ldGXhzvAwx_8M",
+        authDomain: "chat-294cc.firebaseapp.com",
+        databaseURL: "https://chat-294cc-default-rtdb.firebaseio.com",
+        projectId: "chat-294cc",
+        storageBucket: "chat-294cc.firebasestorage.app",
+        messagingSenderId: "913615304269",
+        appId: "1:913615304269:web:0274ffaccb8e6b678e4e04",
+        measurementId: "G-SJR9NDW86B"
+      };
+
+      const app = initializeApp(cfg);
+      const auth = getAuth(app);
+      const storage = getStorage(app);
+      const functions = getFunctions(app, 'us-central1');
+
+      // Elements
+      const uploadArea = document.getElementById('upload-area');
+      const imageUpload = document.getElementById('image-upload');
+      const previewImage = document.getElementById('preview-image');
+      const uploadHint = document.getElementById('upload-hint');
+      const promptInput = document.getElementById('prompt-input');
+      const convertBtn = document.getElementById('convert-btn');
+      const cropStartBtn = document.getElementById('crop-start');
+      const cropApplyBtn = document.getElementById('crop-apply');
+      const cropCancelBtn = document.getElementById('crop-cancel');
+
+      let cropper = null;
+      const loadingAnimation = document.getElementById('loading-animation');
+      const resultArea = document.getElementById('result-area');
+      const resultContainer = document.getElementById('result-container');
+      const resultImage = document.getElementById('result-image');
+      const downloadBtn = document.getElementById('download-btn');
+
+      // State
+      let selectedImage = null;
+      convertBtn.disabled = true;
+
+      // Upload interactions
+      uploadArea.addEventListener('click', () => imageUpload.click());
+      uploadArea.addEventListener('dragover', (e) => { e.preventDefault(); uploadArea.classList.add('bg-gray-200'); });
+      uploadArea.addEventListener('dragleave', () => uploadArea.classList.remove('bg-gray-200'));
+      uploadArea.addEventListener('drop', (e) => { e.preventDefault(); uploadArea.classList.remove('bg-gray-200'); if (e.dataTransfer.files.length) handleImageUpload(e.dataTransfer.files[0]); });
+      imageUpload.addEventListener('change', () => { if (imageUpload.files.length) handleImageUpload(imageUpload.files[0]); });
+
+      function handleImageUpload(file) {
+        if (!file.type.match('image.*')) { alert('请选择图片文件'); return; }
+        selectedImage = file;
+        const reader = new FileReader();
+        reader.onload = (e) => { 
+          previewImage.src = e.target.result; 
+          if (uploadHint) uploadHint.style.display = 'none';
+          convertBtn.disabled = false; 
+          cropStartBtn.classList.remove('hidden');
+          cropApplyBtn.classList.add('hidden');
+          cropCancelBtn.classList.add('hidden');
+          if (cropper) { cropper.destroy(); cropper = null; }
+        };
+        reader.readAsDataURL(file);
+      }
+
+      // Cropper actions
+      cropStartBtn.addEventListener('click', () => {
+        if (cropper) return;
+        cropper = new window.Cropper(previewImage, {
+          aspectRatio: 1,
+          viewMode: 1,
+          autoCropArea: 1,
+          background: false,
+        });
+        cropApplyBtn.classList.remove('hidden');
+        cropCancelBtn.classList.remove('hidden');
+        cropStartBtn.classList.add('hidden');
+      });
+
+      cropCancelBtn.addEventListener('click', () => {
+        if (!cropper) return;
+        cropper.destroy();
+        cropper = null;
+        cropApplyBtn.classList.add('hidden');
+        cropCancelBtn.classList.add('hidden');
+        cropStartBtn.classList.remove('hidden');
+      });
+
+      cropApplyBtn.addEventListener('click', () => {
+        if (!cropper) return;
+        const canvas = cropper.getCroppedCanvas({ width: 1024, height: 1024 });
+        canvas.toBlob((blob) => {
+          if (!blob) return;
+          const newFile = new File([blob], 'cropped.png', { type: 'image/png' });
+          selectedImage = newFile;
+          previewImage.src = canvas.toDataURL('image/png');
+          cropper.destroy();
+          cropper = null;
+          cropApplyBtn.classList.add('hidden');
+          cropCancelBtn.classList.add('hidden');
+          cropStartBtn.classList.remove('hidden');
+        }, 'image/png', 0.95);
+      });
+
+      async function ensureAuth() { if (!auth.currentUser) await signInAnonymously(auth); return auth.currentUser; }
+      async function uploadToStorage(file, uid) {
+        const safe = file.name.replace(/[^a-zA-Z0-9_.-]/g, '_');
+        const path = `user_uploads/${uid}/${Date.now()}_${safe}`;
+        await uploadBytes(ref(storage, path), file, { contentType: file.type || 'image/png' });
+        return path;
+      }
+      async function callStyleTransfer(storagePath, stylePrompt) {
+        const fn = httpsCallable(functions, 'styleTransfer');
+        const res = await fn({ storagePath, stylePrompt });
+        return res.data;
+      }
+
+      convertBtn.addEventListener('click', async () => {
+        try {
+          if (!selectedImage) return;
+          const prompt = (promptInput.value || '').trim();
+          if (!prompt) { alert('请输入风格描述'); return; }
+          loadingAnimation.classList.remove('hidden');
+          const user = await ensureAuth();
+          const storagePath = await uploadToStorage(selectedImage, user.uid);
+          const { downloadUrl } = await callStyleTransfer(storagePath, prompt);
+          resultImage.src = downloadUrl;
+          resultArea.classList.add('hidden');
+          resultContainer.classList.remove('hidden');
+        } catch (e) {
+          alert(`调用失败：${e.message || e}`);
+          console.error(e);
+        } finally {
+          loadingAnimation.classList.add('hidden');
+        }
+      });
+
+      downloadBtn.addEventListener('click', () => {
+        const link = document.createElement('a');
+        link.href = resultImage.src;
+        link.download = 'styled.png';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
+    </script>
+</body>
+</html>
+    
